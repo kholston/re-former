@@ -14,11 +14,23 @@
 <h2>Rails form_tag</h2>
 <%= form_tag("/users",method: "post") do%>
   <%= label_tag(:username, "Username:")%>
-  <%= text_field_tag(:username) %>
+  <%= text_field_tag(:username) %><br />
   <%= label_tag(:email, "Email Address:")%>
-  <%= email_field_tag(:email) %>
+  <%= email_field_tag(:email) %><br />
   <%= label_tag(:password, "Password")%>
-  <%= password_field_tag(:password)%>
+  <%= password_field_tag(:password)%><br />
 
   <%= submit_tag("Create") %>
 <%end%>
+
+<h2>Rails form_for</h2>
+<%= form_for @user, url: {action: "create"} do |f|%>
+  <%= f.label :username , "Your user name here", placeholder:"NewUser", :value => "NewUser"%>
+  <%= f.text_field :username %><br />
+  <%= f.label :email %>
+  <%= f.email_field :email, placeholder: "example@example.com" %><br />
+  <%= f.label :password %>
+  <%= f.password_field :password %><br />
+  <%= f.submit "Create" %>
+
+<% end %>
